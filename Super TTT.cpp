@@ -5,14 +5,36 @@ char ref[3][3];
 char board[9][9];
 int turn = 1;
 
-void wrong_entry()
+void already_filled()
 {
     system
     (
         "gum style \
         --foreground=\"#ff3399\" \
         --bold \
-        \"Invalid Entry, Enter Again!\""
+        \"Invalid Entry position is already filled, Enter Again!\""
+    );    
+}
+
+void wrong_range()
+{
+    system
+    (
+        "gum style \
+        --foreground=\"#ff3399\" \
+        --bold \
+        \"Range Error, Enter Again!\""
+    );    
+}
+
+void out_of_bounds()
+{
+    system
+    (
+        "gum style \
+        --foreground=\"#ff3399\" \
+        --bold \
+        \"Out of bounds, Enter Again!\""
     );    
 }
 
@@ -76,11 +98,6 @@ void print_bord()
     cout<<"\n";
 }
 
-// bool check()
-// {
-
-// }
-
 int main()
 {
     init();
@@ -100,16 +117,24 @@ int main()
             else
             {
                 cout<<"Enter [co-oridnates] in SEGMET ["<<segment<<"] for \"X\"\n";
-                cout<<"In the Range : ROW["<<row_low<<", "<<row_high<<"] : "<<"COL["<<col_low<<", "<<col_high<<"]\n";
+                cout<<"In the Range : ROW["<<col_low<<", "<<col_high<<"] : "<<"COL["<<row_low<<", "<<row_high<<"]\n";
             }
 
             cin>>x>>y;
-            if(board[x-1][y-1] == ' ')
+
+            if(!b && (x<col_low || x>col_high || y<row_low || y>row_high))
+            {
+                wrong_range();
+                this_thread::sleep_for(std::chrono::seconds(2));
+                print_bord();
+                continue;
+            }
+            else if(board[x-1][y-1] == ' ')
             {
                 if(x>9 || x<1 || y>9 || y<1)
                 {
-                    cout<<"Invalid Entry, Enter Again!\n";
-                    system("sleep 2");
+                    out_of_bounds();
+                    this_thread::sleep_for(std::chrono::seconds(2));
                     print_bord();
                     continue;
                 }
@@ -123,8 +148,8 @@ int main()
             }
             else
             {
-                wrong_entry();
-                system("sleep 2");
+                already_filled();
+                this_thread::sleep_for(std::chrono::seconds(2));
                 print_bord();
                 continue;
             }
@@ -135,15 +160,23 @@ int main()
             else
             {
                 cout<<"Enter [co-oridnates] in SEGMET ["<<segment<<"] for \"O\"\n";
-                cout<<"In the Range : ROW["<<row_low<<", "<<row_high<<"] : "<<"COL["<<col_low<<", "<<col_high<<"]\n";
+                cout<<"In the Range : ROW["<<col_low<<", "<<col_high<<"] : "<<"ROW["<<row_low<<", "<<row_high<<"]\n";
             }
             cin>>x>>y;
-            if(board[x-1][y-1] == ' ')
+            
+            if((x<col_low || x>col_high || y<row_low || y>row_high) && !b)
+            {
+                wrong_range();
+                this_thread::sleep_for(std::chrono::seconds(2));
+                print_bord();
+                continue;
+            }
+            else if(board[x-1][y-1] == ' ')
             {
                 if(x>9 || x<1 || y>9 || y<1)
                 {
-                    wrong_entry();
-                    system("sleep 2");
+                    out_of_bounds();
+                    this_thread::sleep_for(std::chrono::seconds(2));
                     print_bord();
                     continue;
                 }
@@ -157,8 +190,8 @@ int main()
             }
             else
             {
-                wrong_entry();
-                system("sleep 2");
+                already_filled();
+                this_thread::sleep_for(std::chrono::seconds(2));
                 print_bord();
                 continue;
             }
