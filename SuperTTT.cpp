@@ -50,15 +50,13 @@ void init()
     final_board[i][j] = ' ';
 
     system("clear");
+    cout<<"\n"; 
 
-    cout<<"INITAL BOARD 9x9 EMPTY!\n";
-    cout<<"TURN : X"<<"\n\n";
 
     for(int i=0; i<9; i++)
     {
-        if(i==0) cout<<"\t1   2   3---------------4   5   6---------------7   8   9\n\n";
-
-        cout<<i+1<<"\t";
+        if(i==0) cout<<"\t\t1   2   3 ───────────── 4   5   6 ───────────── 7   8   9\n\n";
+        cout<<"\t"<<i+1<<"\t";
         for(int j=0; j<9; j++)
         {
             cout<<board[i][j];
@@ -67,26 +65,25 @@ void init()
         }
 
         cout<<"\n";
-        if((i+1)%3 !=0 ) cout<<"\t━━╋━━━╋━━               ━━╋━━━╋━━               ━━╋━━━╋━━\n";
+        if((i+1)%3 !=0 ) cout<<"\t       ━━━╋━━━╋━━━             ━━━╋━━━╋━━━             ━━━╋━━━╋━━━\n";
         if((i+1)%3 == 0) cout<<"\n";
-        if((i+1)%3 == 0) cout<<"\t1   2   3---------------4   5   6---------------7   8   9\n\n";
+        if((i+1)%3 == 0) cout<<"\t\t1   2   3 ───────────── 4   5   6 ───────────── 7   8   9\n\n";
     }
+    cout<<"\n";
+    system("gum style --bold --foreground \"#33cc33\" \"                                         TURN━𝗫\"");
     cout<<"\n";
 }
 
 void print_bord()
 {
     system("clear");
-
-    cout<<"The Game is ONNNN!\n";
-    if(turn == 1) cout<<"TURN : X\n\n";
-    else cout<<"TURN : O\n\n";
+    cout<<"\n";
 
     for(int i=0; i<9; i++)
     {
-        if(i==0) cout<<"\t1   2   3---------------4   5   6---------------7   8   9\n\n";
+        if(i==0) cout<<"\t\t1   2   3 ───────────── 4   5   6 ───────────── 7   8   9\n\n";
 
-        cout<<i+1<<"\t";
+        cout<<"\t"<<i+1<<"\t";
         for(int j=0; j<9; j++)
         {
             cout<<board[i][j];
@@ -96,9 +93,19 @@ void print_bord()
         }
 
         cout<<"\n";
-        if((i+1)%3 != 0) cout<<"\t━━╋━━━╋━━               ━━╋━━━╋━━               ━━╋━━━╋━━\n";
+        if((i+1)%3 != 0) cout<<"\t       ━━━╋━━━╋━━━             ━━━╋━━━╋━━━             ━━━╋━━━╋━━━\n";
         if((i+1)%3 == 0) cout<<"\n";
-        if((i+1)%3 == 0) cout<<"\t1   2   3---------------4   5   6---------------7   8   9\n\n";
+        if((i+1)%3 == 0) cout<<"\t\t1   2   3 ───────────── 4   5   6 ───────────── 7   8   9\n\n";
+    }
+    cout<<"\n";
+
+    if(turn == 1){
+        // cout<<"TURN : X\n\n";
+        system("gum style --bold --foreground \"#33cc33\" \"                                         TURN━𝗫\"");
+    }
+    else{
+        // cout<<"TURN : O\n\n";
+        system("gum style --bold --foreground \"#33cc33\" \"                                         TURN━🞅\"");
     }
     cout<<"\n";
 }
@@ -186,13 +193,13 @@ int main()
 
         if(turn)
         {
-            if(b) cout<<"Enter Anywhere!\n";
+            if(b) cout<<"\t\t\t\t     Enter Anywhere!\n";
             else
             {
-                cout<<"Enter [co-oridnates] in SEGMET ["<<segment<<"] for \"X\"\n";
-                cout<<"In the Range : ROW["<<row_low<<", "<<row_high<<"] : "<<"COL["<<col_low<<", "<<col_high<<"]\n";
+                cout<<"\t  Enter [co-oridnates] in SEGMET ["<<segment<<"] In the Range : ROW["<<row_low<<", "<<row_high<<"] : "<<"COL["<<col_low<<", "<<col_high<<"]\n";
             }
 
+            cout<<"\n\t : ";
             cin>>x>>y;
 
             if(x>9 || x<1 || y>9 || y<1)
@@ -229,10 +236,10 @@ int main()
             if(b) cout<<"Enter Anywhere!\n";
             else
             {
-                cout<<"Enter [co-oridnates] in SEGMET ["<<segment<<"] for \"O\"\n";
-                cout<<"In the Range : ROW["<<row_low<<", "<<row_high<<"] : "<<"ROW["<<col_low<<", "<<col_high<<"]\n";
+                cout<<"\tEnter [co-oridnates] in SEGMET ["<<segment<<"] In the Range : ROW["<<row_low<<", "<<row_high<<"] : "<<"COL["<<col_low<<", "<<col_high<<"]\n";
             }
 
+            cout<<"\n\t : ";
             cin>>x>>y;
 
             if(x>9 || x<1 || y>9 || y<1)
@@ -301,42 +308,41 @@ int main()
 
 
 
-        Calculating current range and current segment wise co-ordinate from current x and y for ref check
+        // Calculating current range and current segment wise co-ordinate from current x and y for ref check
 
-        int cur_row_l, cur_row_h, cur_col_l, cur_col_h;
+        // int cur_row_l, cur_row_h, cur_col_l, cur_col_h;
 
-        if(x < 4) { cur_row_l = 1; cur_row_h = 3; }
-        else if(x > 3 && x < 7) { cur_row_l = 4; cur_row_h = 6; }
-        else if(x > 6) { cur_row_l = 7; cur_row_h = 9; }
+        // if(x < 4) { cur_row_l = 1; cur_row_h = 3; }
+        // else if(x > 3 && x < 7) { cur_row_l = 4; cur_row_h = 6; }
+        // else if(x > 6) { cur_row_l = 7; cur_row_h = 9; }
 
-        if(y < 4) { cur_col_l = 1; cur_col_h = 3; }
-        else if(y > 3 && y < 7) { cur_col_l = 4; cur_col_h = 6; }
-        else if(y > 6) { cur_col_l = 7; cur_col_h = 9; }
+        // if(y < 4) { cur_col_l = 1; cur_col_h = 3; }
+        // else if(y > 3 && y < 7) { cur_col_l = 4; cur_col_h = 6; }
+        // else if(y > 6) { cur_col_l = 7; cur_col_h = 9; }
 
-        int segX, segY;
+        // int segX, segY;
 
-        if(x < 4)
-        {
-            if(y < 4) { segX = 1; segY = 1; }
-            else if(y > 3 && y < 7) { segX = 1; segY = 2; }
-            else if(y > 6) { segX = 1; segY = 3; }
-        }
-        else if(x > 3 && x < 7)
-        {
-            if(y < 4) { segX = 2; segY = 1; }
-            else if(y > 3 && y < 7) { segX = 2; segY = 2; }
-            else if(y > 6) { segX = 2; segY = 3; }
-        }
-        else if(x > 6)
-        {
-            if(y < 4) { segX = 3; segY = 1; }
-            else if(y > 3 && y < 7) { segX = 3; segY = 2; }
-            else if(y > 6) { segX = 3; segY = 3; }
-        }
+        // if(x < 4)
+        // {
+        //     if(y < 4) { segX = 1; segY = 1; }
+        //     else if(y > 3 && y < 7) { segX = 1; segY = 2; }
+        //     else if(y > 6) { segX = 1; segY = 3; }
+        // }
+        // else if(x > 3 && x < 7)
+        // {
+        //     if(y < 4) { segX = 2; segY = 1; }
+        //     else if(y > 3 && y < 7) { segX = 2; segY = 2; }
+        //     else if(y > 6) { segX = 2; segY = 3; }
+        // }
+        // else if(x > 6)
+        // {
+        //     if(y < 4) { segX = 3; segY = 1; }
+        //     else if(y > 3 && y < 7) { segX = 3; segY = 2; }
+        //     else if(y > 6) { segX = 3; segY = 3; }
+        // }
 
-        if(final_board[segX-1][segY-1] != 'X' || final_board[segX-1][segY-1] != 'Y')
-        // update_ref(board[x-1][y-1], cur_row_l, cur_row_h, cur_col_l, cur_col_h, segX, segY);
-
+        // if(final_board[segX-1][segY-1] != 'X' || final_board[segX-1][segY-1] != 'Y')
+        // // update_ref(board[x-1][y-1], cur_row_l, cur_row_h, cur_col_l, cur_col_h, segX, segY);
 
     }
 }

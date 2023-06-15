@@ -1,6 +1,12 @@
 #!/bin/bash
 
 
+# white
+text_color0() {
+    text=$1
+    gum style --bold --foreground "#ffffff" "$text"
+}
+
 # bold pink
 text_color1() {
     text=$1
@@ -33,19 +39,19 @@ text_color5() {
 
 #66b3ff
 print_banner() {
-    # clear
+    clear
     gum style \
     --bold \
     --border thick  \
     --border-foreground="#66b3ff" \
     --width=1 \
-    --padding="0 10" \
+    --padding="-1 11" \
     "
-                   $(text_color1 "T") ┃ $(text_color2 "I") ┃ $(text_color4 "C  ")
-                  "━━━╋━━━╋━━━"
-$(text_color1 "S  U  P  E  R  ")    $(text_color4 "T") ┃ $(text_color2 "A") ┃ $(text_color1 "C  ")
-                  "━━━╋━━━╋━━━"
-                   $(text_color4 "T") ┃ $(text_color1 "O") ┃ $(text_color2 "E  ;")
+                        $(text_color1 "T") ┃ $(text_color2 "I") ┃ $(text_color4 "C  ")
+                       $(text_color0 "━━━╋━━━╋━━━")
+$(text_color1 "     S  U  P  E  R  ")    $(text_color4 "T") ┃ $(text_color2 "A") ┃ $(text_color1 "C     ")
+                       $(text_color0 "━━━╋━━━╋━━━")
+                        $(text_color4 "T") ┃ $(text_color1 "O") ┃ $(text_color2 "E  ")
 "
 }
 
@@ -53,11 +59,12 @@ print_banner
 
 echo ""
 
-option=$(gum choose --cursor="❯  "   " Play" " How to Play" " About" " Quit")
+option=$(gum choose --cursor="          ❯ "   " Play" " How to Play" " About" " Quit")
 
 if [ $option = "Play" ]
     then
-    echo "$(text_color4 "  Loading Game...")"
-    ./loading
+    echo "$(text_color4 "               Loading Game...")"
+    sleep 1
+
     ./a.out
 fi
