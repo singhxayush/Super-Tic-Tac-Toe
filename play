@@ -1,0 +1,63 @@
+#!/bin/bash
+
+
+# bold pink
+text_color1() {
+    text=$1
+    gum style --bold --foreground "#ff3399" "$text"
+}
+
+# bold red
+text_color2() {
+    text=$1
+    gum style --bold --foreground "#ff0000" "$text"
+}
+
+# light green
+text_color3() {
+    text=$1
+    gum style --bold --foreground "#33cc33" "$text"
+}
+
+# bold green
+text_color4() {
+    text=$1
+    gum style --bold --foreground "#33cc33" "$text"
+}
+
+# bold blue
+text_color5() {
+    text=$1
+    gum style --bold --foreground "#66b3ff" "$text"
+}
+
+#66b3ff
+print_banner() {
+    # clear
+    gum style \
+    --bold \
+    --border thick  \
+    --border-foreground="#66b3ff" \
+    --width=1 \
+    --padding="0 10" \
+    "
+                   $(text_color1 "T") ┃ $(text_color2 "I") ┃ $(text_color4 "C  ")
+                  "━━━╋━━━╋━━━"
+$(text_color1 "S  U  P  E  R  ")    $(text_color4 "T") ┃ $(text_color2 "A") ┃ $(text_color1 "C  ")
+                  "━━━╋━━━╋━━━"
+                   $(text_color4 "T") ┃ $(text_color1 "O") ┃ $(text_color2 "E  ;")
+"
+}
+
+print_banner
+
+echo ""
+
+option=$(gum choose --cursor="❯  "   " Play" " How to Play" " About" " Quit")
+
+if [ $option = "Play" ]
+    then
+    echo "$(text_color4 "  Loading Game...")"
+    ./loading
+    ./a.out
+fi

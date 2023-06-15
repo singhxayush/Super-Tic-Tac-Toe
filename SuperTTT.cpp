@@ -62,12 +62,12 @@ void init()
         for(int j=0; j<9; j++)
         {
             cout<<board[i][j];
-            if((j+1)%3 != 0) cout<<" | ";
+            if((j+1)%3 != 0) cout<<" ┃ ";
             else if(j!=8) cout<<"\t"<<i+1<<"\t";
         }
 
         cout<<"\n";
-        if((i+1)%3 !=0 ) cout<<"\t---------               ---------               ---------\n";
+        if((i+1)%3 !=0 ) cout<<"\t━━╋━━━╋━━               ━━╋━━━╋━━               ━━╋━━━╋━━\n";
         if((i+1)%3 == 0) cout<<"\n";
         if((i+1)%3 == 0) cout<<"\t1   2   3---------------4   5   6---------------7   8   9\n\n";
     }
@@ -90,19 +90,18 @@ void print_bord()
         for(int j=0; j<9; j++)
         {
             cout<<board[i][j];
-            if((j+1)%3 != 0) cout<<" | ";
+            if((j+1)%3 != 0) cout<<" ┃ ";
             else if(j!=8) cout<<"\t"<<i+1<<"\t";
 
         }
 
         cout<<"\n";
-        if((i+1)%3 != 0) cout<<"\t---------               ---------               ---------\n";
+        if((i+1)%3 != 0) cout<<"\t━━╋━━━╋━━               ━━╋━━━╋━━               ━━╋━━━╋━━\n";
         if((i+1)%3 == 0) cout<<"\n";
         if((i+1)%3 == 0) cout<<"\t1   2   3---------------4   5   6---------------7   8   9\n\n";
     }
     cout<<"\n";
 }
-
 
 void print_segment(int rl, int rh, int cl, int ch)
 {
@@ -302,7 +301,7 @@ int main()
 
 
 
-        // Calculating current range and current segment wise co-ordinate from current x and y for ref check
+        Calculating current range and current segment wise co-ordinate from current x and y for ref check
 
         int cur_row_l, cur_row_h, cur_col_l, cur_col_h;
 
@@ -336,10 +335,8 @@ int main()
         }
 
         if(final_board[segX-1][segY-1] != 'X' || final_board[segX-1][segY-1] != 'Y')
-        update_ref(board[x-1][y-1], cur_row_l, cur_row_h, cur_col_l, cur_col_h, segX, segY);
+        // update_ref(board[x-1][y-1], cur_row_l, cur_row_h, cur_col_l, cur_col_h, segX, segY);
 
 
-
-        this_thread::sleep_for(std::chrono::seconds(5));
     }
 }
