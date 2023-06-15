@@ -254,6 +254,7 @@ int main()
                 wrong_range();
                 this_thread::sleep_for(std::chrono::seconds(2));
                 print_bord();
+                
                 continue;
             }
             else if(board[x-1][y-1] == ' ')
