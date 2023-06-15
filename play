@@ -55,13 +55,72 @@ $(text_color1 "     S  U  P  E  R  ")    $(text_color4 "T") ┃ $(text_color2 "A
 "
 
 }
-
 print_banner
+
+rules() {
+    gum style --bold --foreground "#33cc33" "   RULES :"
+    echo ""
+
+    gum style --faint "     $(text_color2 "1. Game Setup") 
+     Consider a 3x3 grid. Within each cell of this grid, draw another 3x3 grid. 
+     You now have a total of nine smaller grids arranged in a 3x3 fashion."
+
+    sleep 0.5
+    echo ""
+
+    gum style --faint "     $(text_color2 "2. Player Assignment ") 
+     Assign one player as "X" and the other as "O." Players will take turns placing 
+     their respective symbol on any available space within the smaller grids.."
+
+    sleep 0.5
+    echo ""
+
+
+    gum style --faint "     $(text_color2 "3. Winning Conditions ") 
+     The objective is to win in the smaller grids and to claim victory in the larger 
+     grid as well. A player wins a smaller grid by getting three of their symbols in 
+     a row, either horizontally, vertically, or diagonally. To win the larger grid, 
+     a player must win three smaller grids in a row, following the same winning conditions."
+
+    sleep 0.5
+    echo ""
+
+    gum style --faint "     $(text_color2 "4. Gameplay ") 
+     The first player starts by placing their symbol in any open cell within any of the 
+     smaller grids. The placement determines the next smaller grid where the opponent must 
+     play. For example, if the first player places their symbol in the top right cell of a 
+     smaller grid, the next move must be made within the top right smaller grid of the larger grid."
+
+    sleep 0.5
+    echo ""
+
+    gum style --faint "     $(text_color2 "5. Restricted Move ") 
+     Once the game progresses to a smaller grid, if that grid has already been won or is 
+     completely filled, the player can choose any other open grid to play in."
+
+    sleep 0.5
+    echo ""
+
+    gum style --faint "     $(text_color2 "6. Continue Playing ") 
+     Players alternate turns, placing their symbols in the corresponding smaller grids 
+     based on the opponent's previous move. The game continues until one player wins three 
+     smaller grids in a row or the larger grid is completely filled without a winner."
+
+    sleep 0.5
+    echo ""
+
+    gum style --faint "     $(text_color2 "7. Overall Winner ") 
+     If a player wins three smaller grids in a row, they are declared the winner of the 
+     larger grid. If all smaller grids are filled, and there is no overall winner, the 
+     game ends in a draw."
+}
+
 
 echo ""
 
-option=$(gum choose --cursor="          ❯ "   " Play" " How to Play" " About" " Quit")
+option=$(gum choose --cursor="          ❯ "   " Play" " Rules" " About" " Quit")
 
+# play
 if [ $option = "Play" ]
     then
     echo "$(text_color4 "               Loading Game...")"
@@ -69,3 +128,11 @@ if [ $option = "Play" ]
 
     ./a.out
 fi
+
+
+# rules
+if [ $option = "Rules" ]
+    then
+    rules
+fi
+
