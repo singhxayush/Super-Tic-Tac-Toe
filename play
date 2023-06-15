@@ -53,6 +53,7 @@ $(text_color1 "     S  U  P  E  R  ")    $(text_color4 "T") ┃ $(text_color2 "A
                        $(text_color0 "━━━╋━━━╋━━━")
                         $(text_color4 "T") ┃ $(text_color1 "O") ┃ $(text_color2 "E  ")
 "
+
 }
 
 print_banner
