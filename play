@@ -47,7 +47,7 @@ print_banner() {
     --width=1 \
     --padding="-1 11" \
     "
-                        $(text_color2 "𝝩") ┃ $(text_color2 "𝗜") ┃ $(text_color4 "𝗖  ")
+                        $(text_color2 "𝝩") ┃ $(text_color1 "𝗜") ┃ $(text_color4 "𝗖  ")
                        $(text_color0 "━━━╋━━━╋━━━")
 $(text_color1 "     𝗦  𝗨  𝗣  𝗘  𝗥  ")    $(text_color4 "𝝩") ┃ $(text_color5 "𝝙") ┃ $(text_color1 "𝗖     ")
                        $(text_color0 "━━━╋━━━╋━━━")
@@ -134,5 +134,17 @@ fi
 if [ $option = "Rules" ]
     then
     rules
+    
+    echo ""
+    gum style --bold --foreground="#33cc33" "   Press Enter to go to main menu" && read -r
+    ./play
+fi
+
+
+# Quit
+if [ $option = "Quit" ]
+    then
+    clear
+    exit
 fi
 
