@@ -343,7 +343,7 @@ int main()
         // }
 
         // if(final_board[segX-1][segY-1] != 'X' || final_board[segX-1][segY-1] != 'Y')
-        // // update_ref(board[x-1][y-1], cur_row_l, cur_row_h, cur_col_l, cur_col_h, segX, segY);
+        // update_ref(board[x-1][y-1], cur_row_l, cur_row_h, cur_col_l, cur_col_h, segX, segY);
 
     }
 }
